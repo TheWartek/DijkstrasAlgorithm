@@ -24,23 +24,13 @@ public class Dijkstra implements RoutingAlgorithm {
     @Override
     public List<Point> getPath(int stop) {
 	List<Point> path = new ArrayList<Point>();
-	List<Integer> l = new ArrayList<Integer>();
 	
 	int index = stop;
 	while (index != start) {
 	    path.add(V.get(index));
-	    l.add(index);
 	    index = p[index];
-	    try {
-		TimeUnit.SECONDS.sleep(1);
-	    } catch (InterruptedException e) {
-		e.printStackTrace();
-	    }
-	    System.out.println(index + " != " + start);
 	}
 	path.add(V.get(start));
-	l.add(start);
-	System.out.println(l);
 	
 	return path;
     }
@@ -71,7 +61,6 @@ public class Dijkstra implements RoutingAlgorithm {
 	p[start] = 0;
 	
 	while (!Q.isEmpty()) {
-	    System.out.println(Q);
 	    u = min(d, Q);
 	    Q.remove(u);
 	    for (Integer v : Q) {
