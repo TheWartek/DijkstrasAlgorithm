@@ -1,5 +1,6 @@
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -13,6 +14,7 @@ public class Dijkstra implements RoutingAlgorithm {
     private int[] p;
     private int[] d;
     private static final int INF = 9999;
+    private int start;
 
     @Override
     public String getName() {
@@ -21,7 +23,26 @@ public class Dijkstra implements RoutingAlgorithm {
 
     @Override
     public List<Point> getPath(int stop) {
-	return null;
+	List<Point> path = new ArrayList<Point>();
+	List<Integer> l = new ArrayList<Integer>();
+	
+	int index = stop;
+	while (index != start) {
+	    path.add(V.get(index));
+	    l.add(index);
+	    index = p[index];
+	    try {
+		TimeUnit.SECONDS.sleep(1);
+	    } catch (InterruptedException e) {
+		e.printStackTrace();
+	    }
+	    System.out.println(index + " != " + start);
+	}
+	path.add(V.get(start));
+	l.add(start);
+	System.out.println(l);
+	
+	return path;
     }
 
     @Override
@@ -34,18 +55,20 @@ public class Dijkstra implements RoutingAlgorithm {
 
     @Override
     public void run(int start) {
+	this.start = start;
 	int n = E.length;
 	List<Integer> Q = new ArrayList<Integer>(n);
 	p = new int[n];
 	d = new int[n];
 	Integer u = -1;
-	d[start] = 0;
 	
 	for (int i = 0; i < n; ++i) {
-	    p[i] = 0;
+	    p[i] = -1;
 	    d[i] = INF;
 	    Q.add(i);
 	}
+	d[start] = 0;
+	p[start] = 0;
 	
 	while (!Q.isEmpty()) {
 	    System.out.println(Q);
