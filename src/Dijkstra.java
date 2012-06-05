@@ -22,17 +22,6 @@ public class Dijkstra implements RoutingAlgorithm {
 
     @Override
     public List<Point> getPath(int stop) {
-	System.out.println("E[][]");
-	for (int i = 0; i < E.length; ++i) {
-	    System.out.print("[");
-	    for (int j = 0; j < E[0].length; ++j) {
-		System.out.print(E[i][j] + ",");
-	    }
-	    System.out.println("]");
-	}
-	System.out.println("d[]: " + Arrays.toString(d));
-	System.out.println("p[]: " + Arrays.toString(p));
-
 	List<Point> path = new ArrayList<Point>();
 
 	int index = stop;
