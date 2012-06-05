@@ -8,7 +8,7 @@ import pl.mgrproject.api.plugins.Converter;
 public class ListToMatrixConverter implements Converter {
     
     private Graph<?> graph;
-    private int infinity = -1;
+    private int infinity = 9999;
 
     @Override
     public String getName() {
