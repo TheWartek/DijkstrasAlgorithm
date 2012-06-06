@@ -20,7 +20,7 @@ public class Dijkstra implements RoutingAlgorithm {
     }
 
     @Override
-    public List<Point> getPath(int stop) {
+    public List<Point> getPath(int stop) throws Exception {
 	List<Point> path = new ArrayList<Point>();
 
 	int index = stop;
@@ -60,9 +60,6 @@ public class Dijkstra implements RoutingAlgorithm {
 
 	while (!Q.isEmpty()) {
 	    u = min(d, Q);
-	    System.out.println("D p[]: " + Arrays.toString(p));
-	    System.out.println("D d[]: " + Arrays.toString(d));
-	    System.out.println("min: " + u);
 	    Q.remove(u);
 	    for (Integer v : Q) {
 		if (E[u][v] != INF) {
