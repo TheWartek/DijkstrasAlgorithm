@@ -2,7 +2,6 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import pl.mgrproject.api.Graph;
 import pl.mgrproject.api.plugins.RoutingAlgorithm;
@@ -43,7 +42,7 @@ public class Dijkstra implements RoutingAlgorithm {
     }
 
     @Override
-    public void run(int start) {
+    public void run(int start) throws Exception {
 	this.start = start;
 	int n = E.length;
 	List<Integer> Q = new ArrayList<Integer>(n);
